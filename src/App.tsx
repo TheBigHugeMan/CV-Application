@@ -19,12 +19,22 @@ function App() {
     phone: ""
   });
 
-  const [education, setEducation] = useState({
-    schoolName: "",
-    degree: "",
-    startDate: "",
-    endDate: ""
-  });
+  
+  const handleAddEducation = () => {  
+    setEducations([...educations, {id: crypto.randomUUID(), schoolName: "", degree: "", startDate: "", endDate: "", hidden: false}])
+  };
+
+   const handleUpdateEducation = (newEducation) => {
+    setEducations(educations.map(edu => edu.id !== newEducation.id ? edu : newEducation))
+  };
+
+  const handleOnRemoveEducation = (edu) => {
+    setEducations(educations.filter(e => edu.id !== e.id));
+  }
+
+  const handleVisibilityToggle = (edu) => {
+    setEducations(educations.map(e => e.id !== edu.id ? e : {...e, hidden: !e.hidden}))
+  };
 
   const [practicalExp, setPracticalExp] = useState({
     title: "",
@@ -41,11 +51,11 @@ function App() {
         <div className="form-content">
           {activeTab === "general" && <GeneralInfo generalInfo={generalInfo} setGeneralInfo={setGeneralInfo} />}
           {activeTab === "practical" && <Practical practicalExp={practicalExp} setPracticalExp={setPracticalExp} />}
-          {activeTab === "education" && <Education education={education} setEducation={setEducation} />}
+          {activeTab === "education" && <Education educations={educations} onAddEducation={handleAddEducation} onUpdateEducation={handleUpdateEducation} onVisibilityToggle={handleVisibilityToggle} onRemoveEducation={handleOnRemoveEducation} />}
         </div>
       </div>
       <div className="cv-preview-section">
-        <CVPreview generalInfo={generalInfo} education={education} practicalExp={practicalExp} />
+        <CVPreview generalInfo={generalInfo} educations={educations} practicalExp={practicalExp} />
       </div>
     </div>
   )

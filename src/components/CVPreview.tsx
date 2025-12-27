@@ -1,5 +1,5 @@
 
-export function CVPreview({practicalExp, generalInfo, education}) {
+export function CVPreview({practicalExp, generalInfo, educations}) {
     return(
         <>
         <div id="top-bar">
@@ -20,9 +20,13 @@ export function CVPreview({practicalExp, generalInfo, education}) {
         <div>
             <h2>Education</h2>
             <div className="education-section">
-                <h3>{education.schoolName}</h3>
-                <p>{education.degree}</p>
-                <p>{education.startDate} - {education.endDate}</p>
+                {educations.map((education) => (
+                    <div key={education.eduId}>
+                        <h3>{education.schoolName}</h3>
+                        <p>{education.degree}</p>
+                        <p>{education.startDate} - {education.endDate}</p>
+                    </div>
+                ))}
             </div>
         </div>
         </>

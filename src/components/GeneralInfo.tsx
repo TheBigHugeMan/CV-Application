@@ -8,16 +8,16 @@ export function GeneralInfo({generalInfo, setGeneralInfo}) {
             <h1>General Information</h1>
             <p>This section is for general information.</p>
             <div>
-            {Field("fName", "First Name:", "text", (e: React.ChangeEvent<HTMLInputElement>) => setGeneralInfo({...generalInfo, fName: e.target.value}))}
-            {Field("lName", "Last Name:", "text", (e: React.ChangeEvent<HTMLInputElement>) => setGeneralInfo({...generalInfo, lName: e.target.value}))}
+                <Field id="fName" textLabel="First Name:" type="text"  onChange={(e) => setGeneralInfo({...generalInfo, fName: e.target.value})} />
+                <Field id="lName" textLabel="Last Name:" type="text" onChange={(e) => setGeneralInfo({...generalInfo, lName: e.target.value})} />
             </div>
             <div>
-            {Field("city", "City:", "text", (e: React.ChangeEvent<HTMLInputElement>) => setGeneralInfo({...generalInfo, city: e.target.value}))}
-            {Field("postCode", "Postal Code:", "text", (e: React.ChangeEvent<HTMLInputElement>) => setGeneralInfo({...generalInfo, postCode: e.target.value}))}
+                <Field id="city" textLabel="City:" type="text" onChange={(e) => setGeneralInfo({...generalInfo, city: e.target.value})} />
+                <Field id="postCode" textLabel="Post Code:" type="text" onChange={(e) => setGeneralInfo({...generalInfo, postCode: e.target.value})} />
             </div>
             <div>
-            {Field("email", "Email:", "email", (e: React.ChangeEvent<HTMLInputElement>) => setGeneralInfo({...generalInfo, email: e.target.value}))}
-            {Field("phone", "Phone Number:", "tel", (e: React.ChangeEvent<HTMLInputElement>) => setGeneralInfo({...generalInfo, phone: e.target.value}))}
+                <Field id="email" textLabel="Email:" type="email"  onChange={(e) => setGeneralInfo({...generalInfo, email: e.target.value})} />
+                <Field id="phone" textLabel="Phone:" type="tel" onChange={(e) => setGeneralInfo({...generalInfo, phone: e.target.value})} />
             </div>
         </div>
     );

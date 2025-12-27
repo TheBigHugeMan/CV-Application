@@ -144,3 +144,8 @@
   margin: 0.3rem 0;
   color: #000000;
 }
+
+.add-button {
+  margin-top: 1rem;
+  text-align: right;
+}
